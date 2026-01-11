@@ -155,23 +155,23 @@ export default {
         <div class="smoke-container">
             <div class="smoke-item">
                 <span class="smoke-label">Ancient CT</span>
-                <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
+                <img src="public/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Ancient T</span>
-                <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
+                <img src="public/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Mirage</span>
-                <img src="/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
+                <img src="public/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Inferno</span>
-                <img src="/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
+                <img src="public/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Overpass</span>
-                <img src="/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
+                <img src="public/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
             </div>
         </div>
     </div>
