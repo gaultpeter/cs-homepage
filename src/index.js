@@ -6,116 +6,130 @@ export default {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS2 Tactical Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>Counter Strike 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --bg: #050b10; 
-            --neon-blue: #00f2ff; 
-            --dark-blue: #00416a;
-            --card-bg: rgba(0, 242, 255, 0.05);
+            --bg: #0a0c10; 
+            --surface: #12151c;
+            --accent: #38bdf8; /* Clean Minimal Blue */
+            --border: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
 
         body { 
             margin: 0; 
-            padding: 20px; 
+            padding: 40px 20px; 
             background: var(--bg); 
-            color: white; 
-            font-family: 'Rajdhani', sans-serif; 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         h1 { 
-            text-align: center; 
-            font-family: 'Orbitron'; 
-            color: var(--neon-blue); 
-            text-shadow: 0 0 15px var(--neon-blue);
+            text-align: left; 
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--text-main); 
             margin-bottom: 40px; 
-            letter-spacing: 5px;
+            letter-spacing: -0.025em;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
         }
 
-        .section-title { 
-            border-left: 3px solid var(--neon-blue); 
-            padding-left: 15px; 
-            margin: 40px auto 20px; 
-            max-width: 1200px; 
-            font-family: 'Orbitron'; 
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+        .section-header { 
+            display: flex;
+            align-items: center;
+            margin: 40px 0 20px; 
         }
-        
+
+        .section-header h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
         .grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 20px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 12px; 
         }
         
         .card { 
             position: relative; 
-            height: 100px; 
-            border-radius: 4px; 
-            overflow: hidden; 
+            padding: 24px;
+            border-radius: 8px; 
             text-decoration: none; 
-            color: var(--neon-blue); 
+            color: var(--text-main); 
             display: flex; 
             align-items: center; 
-            justify-content: center; 
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            background: var(--card-bg);
-            border: 1px solid var(--dark-blue);
-            box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.1);
+            justify-content: space-between;
+            transition: all 0.2s ease; 
+            background: var(--surface);
+            border: 1px solid var(--border);
         }
 
         .card:hover { 
-            background: rgba(0, 242, 255, 0.15);
-            border-color: var(--neon-blue); 
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4), inset 0 0 15px rgba(0, 242, 255, 0.2);
-            transform: translateY(-3px);
+            border-color: var(--accent);
+            background: #161b22;
+            transform: translateY(-2px);
         }
 
         .title { 
-            font-family: 'Orbitron'; 
-            font-size: 1.2rem; 
-            z-index: 2; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 0.95rem; 
+            font-weight: 400;
         }
 
-        /* Decorative Scanlines effect */
-        body::before {
-            content: " ";
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 100;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
+        .arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
         }
 
+        .card:hover .arrow {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            body { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <h1>STRAT CENTER</h1>
-    
-    <div class="section-title">Lineups</div>
-    <div class="grid">
-        <a href="https://csnades.gg/mirage" class="card"><span class="title">Mirage</span></a>
-        <a href="https://csnades.gg/dust2" class="card"><span class="title">Dust 2</span></a>
-        <a href="https://csnades.gg/inferno" class="card"><span class="title">Inferno</span></a>
-        <a href="https://csnades.gg/overpass" class="card"><span class="title">Overpass</span></a>
-        <a href="https://csnades.gg/nuke" class="card"><span class="title">Nuke</span></a>
-        <a href="https://csnades.gg/ancient" class="card"><span class="title">Ancient</span></a>
-        <a href="https://csnades.gg/anubis" class="card"><span class="title">Anubis</span></a>
-    </div>
+    <div class="container">
+        <h1>Counter Strike 2</h1>
+        
+        <div class="section-header">
+            <h2>Nade Lineups</h2>
+        </div>
+        <div class="grid">
+            <a href="https://csnades.gg/mirage" class="card"><span class="title">Mirage</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/dust2" class="card"><span class="title">Dust 2</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/inferno" class="card"><span class="title">Inferno</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/overpass" class="card"><span class="title">Overpass</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/nuke" class="card"><span class="title">Nuke</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/ancient" class="card"><span class="title">Ancient</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/anubis" class="card"><span class="title">Anubis</span><span class="arrow">→</span></a>
+        </div>
 
-    <div class="section-title">Warm Up</div>
-    <div class="grid">
-        <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card"><span class="title">Multi-DM</span></a>
-        <a href="https://cybershoke.net/cs2/servers/dm" class="card"><span class="title">Standard DM</span></a>
-        <a href="https://cybershoke.net/cs2/servers/retake" class="card"><span class="title">Retakes</span></a>
+        <div class="section-header">
+            <h2>Warm Up</h2>
+        </div>
+        <div class="grid">
+            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card"><span class="title">Multi-DM</span><span class="arrow">→</span></a>
+            <a href="https://cybershoke.net/cs2/servers/dm" class="card"><span class="title">Standard DM</span><span class="arrow">→</span></a>
+            <a href="https://cybershoke.net/cs2/servers/retake" class="card"><span class="title">Retakes</span><span class="arrow">→</span></a>
+        </div>
     </div>
 </body>
 </html>
