@@ -1,5 +1,12 @@
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    
+    // Serve static assets (images) if the path points to one
+    if (url.pathname.startsWith('/insta-smoke/')) {
+      return env.ASSETS.fetch(request);
+    }
+
     const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +19,7 @@ export default {
         :root { 
             --bg: #0a0c10; 
             --surface: #12151c;
-            --accent: #38bdf8; /* Clean Minimal Blue */
+            --accent: #38bdf8;
             --border: #1e293b;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
@@ -28,7 +35,7 @@ export default {
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -38,7 +45,6 @@ export default {
             font-size: 1.5rem;
             color: var(--text-main); 
             margin-bottom: 40px; 
-            letter-spacing: -0.025em;
             border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
         }
@@ -59,13 +65,12 @@ export default {
 
         .grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
             gap: 12px; 
         }
         
         .card { 
-            position: relative; 
-            padding: 24px;
+            padding: 20px;
             border-radius: 8px; 
             text-decoration: none; 
             color: var(--text-main); 
@@ -83,25 +88,35 @@ export default {
             transform: translateY(-2px);
         }
 
-        .title { 
-            font-size: 0.95rem; 
-            font-weight: 400;
+        .smoke-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .arrow {
+        .smoke-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .smoke-label {
+            font-size: 0.85rem;
             color: var(--accent);
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            font-weight: 600;
         }
 
-        .card:hover .arrow {
-            opacity: 1;
+        .smoke-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: block;
         }
 
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
-            body { padding: 20px; }
         }
     </style>
 </head>
@@ -113,22 +128,44 @@ export default {
             <h2>Nade Lineups</h2>
         </div>
         <div class="grid">
-            <a href="https://csnades.gg/mirage" class="card"><span class="title">Mirage</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/dust2" class="card"><span class="title">Dust 2</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/inferno" class="card"><span class="title">Inferno</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/overpass" class="card"><span class="title">Overpass</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/nuke" class="card"><span class="title">Nuke</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/ancient" class="card"><span class="title">Ancient</span><span class="arrow">→</span></a>
-            <a href="https://csnades.gg/anubis" class="card"><span class="title">Anubis</span><span class="arrow">→</span></a>
+            <a href="https://csnades.gg/mirage" class="card">Mirage</a>
+            <a href="https://csnades.gg/dust2" class="card">Dust 2</a>
+            <a href="https://csnades.gg/inferno" class="card">Inferno</a>
+            <a href="https://csnades.gg/overpass" class="card">Overpass</a>
+            <a href="https://csnades.gg/nuke" class="card">Nuke</a>
+            <a href="https://csnades.gg/ancient" class="card">Ancient</a>
+            <a href="https://csnades.gg/anubis" class="card">Anubis</a>
         </div>
 
         <div class="section-header">
             <h2>Warm Up</h2>
         </div>
-        <div class="grid">
-            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card"><span class="title">Multi-DM</span><span class="arrow">→</span></a>
-            <a href="https://cybershoke.net/cs2/servers/dm" class="card"><span class="title">Standard DM</span><span class="arrow">→</span></a>
-            <a href="https://cybershoke.net/cs2/servers/retake" class="card"><span class="title">Retakes</span><span class="arrow">→</span></a>
+        <div class="grid" style="margin-bottom: 60px;">
+            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multi-DM</a>
+            <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
+            <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
+        </div>
+
+        <div class="section-header">
+            <h2>Instant Smokes</h2>
+        </div>
+        <div class="smoke-container">
+            <div class="smoke-item">
+                <span class="smoke-label">Ancient CT</span>
+                <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" alt="Ancient CT Smoke">
+            </div>
+            <div class="smoke-item">
+                <span class="smoke-label">Ancient T</span>
+                <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" alt="Ancient T Smoke">
+            </div>
+            <div class="smoke-item">
+                <span class="smoke-label">Inferno</span>
+                <img src="/insta-smoke/inferno.jpg" class="smoke-image" alt="Inferno Smoke">
+            </div>
+            <div class="smoke-item">
+                <span class="smoke-label">Overpass</span>
+                <img src="/insta-smoke/overpass.jpg" class="smoke-image" alt="Overpass Smoke">
+            </div>
         </div>
     </div>
 </body>
