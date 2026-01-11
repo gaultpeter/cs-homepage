@@ -154,7 +154,7 @@ export default {
             <h2>Warm Up</h2>
         </div>
         <div class="grid" style="margin-bottom: 60px;">
-            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multicfg-DM</a>
+            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multi-cfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
             <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
         </div>
