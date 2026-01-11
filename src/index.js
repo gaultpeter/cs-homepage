@@ -2,7 +2,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     
-    // Serve static assets (images) if the path points to one
+    // Serve static assets (images) from the /public folder
     if (url.pathname.startsWith('/insta-smoke/')) {
       return env.ASSETS.fetch(request);
     }
@@ -91,20 +91,22 @@ export default {
         .smoke-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 50px;
             margin-top: 20px;
         }
 
         .smoke-item {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .smoke-label {
             font-size: 0.85rem;
             color: var(--accent);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .smoke-image {
@@ -113,6 +115,7 @@ export default {
             border-radius: 8px;
             border: 1px solid var(--border);
             display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         @media (max-width: 600px) {
@@ -152,19 +155,23 @@ export default {
         <div class="smoke-container">
             <div class="smoke-item">
                 <span class="smoke-label">Ancient CT</span>
-                <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" alt="Ancient CT Smoke">
+                <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Ancient T</span>
-                <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" alt="Ancient T Smoke">
+                <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
+            </div>
+            <div class="smoke-item">
+                <span class="smoke-label">Mirage</span>
+                <img src="/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Inferno</span>
-                <img src="/insta-smoke/inferno.jpg" class="smoke-image" alt="Inferno Smoke">
+                <img src="/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Overpass</span>
-                <img src="/insta-smoke/overpass.jpg" class="smoke-image" alt="Overpass Smoke">
+                <img src="/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
             </div>
         </div>
     </div>
