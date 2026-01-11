@@ -2,10 +2,10 @@ name = "cs-homepage"
 main = "src/index.js"
 compatibility_date = "2024-03-01"
 
+# This section is critical for your images to show up
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
 [observability]
 enabled = true
-
-# Optional: If you have a custom domain (e.g., cs.yourdomain.com)
-# [[routes]]
-# pattern = "cs.yourdomain.com"
-# custom_domain = true

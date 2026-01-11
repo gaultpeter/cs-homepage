@@ -32,6 +32,7 @@ export default {
             color: var(--text-main); 
             font-family: 'Inter', sans-serif; 
             -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -109,13 +110,22 @@ export default {
             letter-spacing: 0.05em;
         }
 
+        .smoke-image-wrapper {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
         .smoke-image {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            border: 1px solid var(--border);
             display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .smoke-image-wrapper:hover .smoke-image {
+            transform: scale(1.02);
         }
 
         @media (max-width: 600px) {
@@ -155,23 +165,33 @@ export default {
         <div class="smoke-container">
             <div class="smoke-item">
                 <span class="smoke-label">Ancient CT</span>
-                <img src="public/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
+                <div class="smoke-image-wrapper">
+                    <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
+                </div>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Ancient T</span>
-                <img src="public/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
+                <div class="smoke-image-wrapper">
+                    <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
+                </div>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Mirage</span>
-                <img src="public/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
+                <div class="smoke-image-wrapper">
+                    <img src="/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
+                </div>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Inferno</span>
-                <img src="public/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
+                <div class="smoke-image-wrapper">
+                    <img src="/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
+                </div>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Overpass</span>
-                <img src="public/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
+                <div class="smoke-image-wrapper">
+                    <img src="/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
+                </div>
             </div>
         </div>
     </div>
