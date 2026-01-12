@@ -179,35 +179,35 @@ export default {
                 <div class="smoke-image-wrapper">
                     <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy">
                 </div>
-                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">Credit: /u/synobazz</a>
+                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Ancient T</span>
                 <div class="smoke-image-wrapper">
                     <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy">
                 </div>
-                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">Credit: /u/synobazz</a>
+                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Mirage</span>
                 <div class="smoke-image-wrapper">
                     <img src="/insta-smoke/mirage.webp" class="smoke-image" loading="lazy">
                 </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">Credit: /u/Daanoking</a>
+                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Inferno</span>
                 <div class="smoke-image-wrapper">
                     <img src="/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy">
                 </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">Credit: /u/synobazz</a>
+                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
             </div>
             <div class="smoke-item">
                 <span class="smoke-label">Overpass</span>
                 <div class="smoke-image-wrapper">
                     <img src="/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy">
                 </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">Credit: /u/synobazz</a>
+                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
             </div>
         </div>
     </div>
