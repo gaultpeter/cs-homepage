@@ -190,21 +190,20 @@ export default {
             transform: scale(1.05);
         }
 
-        dialog {
+        #image-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             background: rgba(0,0,0,0.8);
-            border: none;
-            padding: 0;
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        dialog img {
+        #image-modal img {
             max-width: 90vw;
             max-height: 90vh;
             object-fit: contain;
@@ -525,26 +524,22 @@ export default {
             </div>
         </details>
     </div>
-    <dialog id="image-modal">
+    <div id="image-modal" style="display: none;">
         <img id="modal-image" src="" alt="">
         <button class="close-modal" onclick="closeModal()">×</button>
-    </dialog>
+    </div>
     <script>
         function openModal(src) {
             document.getElementById('modal-image').src = src;
-            document.getElementById('image-modal').showModal();
+            document.getElementById('image-modal').style.display = 'flex';
         }
         function closeModal() {
-            document.getElementById('image-modal').close();
+            document.getElementById('image-modal').style.display = 'none';
         }
         document.getElementById('image-modal').addEventListener('click', function(event) {
             if (event.target === this) {
                 closeModal();
             }
-        });
-        // Ensure modal is closed on page load
-        window.addEventListener('load', () => {
-            document.getElementById('image-modal').close();
         });
     </script>
 </body>
