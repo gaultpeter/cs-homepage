@@ -229,6 +229,7 @@ export default {
             z-index: 10;
             padding: 0;
             font-family: inherit;
+            padding-top: 1px;
         }
 
         .close-modal:hover {
