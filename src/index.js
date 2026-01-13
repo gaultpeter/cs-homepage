@@ -558,24 +558,44 @@ export default {
                 closeModal();
             }
         });
-        // Zoom on Ctrl + hover in modal
+        // Zoom on Shift + hover in modal
         let isZoomed = false;
+        let isMouseOver = false;
+        let lastMouseEvent = null;
         document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
+            isMouseOver = true;
+            lastMouseEvent = e;
             if (e.shiftKey) {
                 isZoomed = true;
                 updateZoom(e);
             }
         });
         document.getElementById('modal-image').addEventListener('mousemove', (e) => {
+            lastMouseEvent = e;
             if (isZoomed) {
                 updateZoom(e);
             }
         });
         document.getElementById('modal-image').addEventListener('mouseleave', (e) => {
+            isMouseOver = false;
             isZoomed = false;
             e.target.style.transform = '';
             e.target.style.transformOrigin = '';
             e.target.style.transition = 'transform 0.2s ease';
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Shift' && isMouseOver && !isZoomed) {
+                isZoomed = true;
+                updateZoom(lastMouseEvent);
+            }
+        });
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'Shift') {
+                isZoomed = false;
+                document.getElementById('modal-image').style.transform = '';
+                document.getElementById('modal-image').style.transformOrigin = '';
+                document.getElementById('modal-image').style.transition = 'transform 0.2s ease';
+            }
         });
         function updateZoom(e) {
             const rect = e.target.getBoundingClientRect();
