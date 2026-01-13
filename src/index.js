@@ -227,6 +227,8 @@ export default {
             font-size: 1.5rem;
             line-height: 1;
             z-index: 10;
+            padding: 0;
+            font-family: inherit;
         }
 
         .close-modal:hover {
@@ -523,9 +525,9 @@ export default {
             </div>
         </details>
     </div>
-    <dialog id="image-modal" style="display: none;">
+    <dialog id="image-modal">
         <img id="modal-image" src="" alt="">
-        <div class="close-modal" onclick="closeModal()">×</div>
+        <button class="close-modal" onclick="closeModal()">×</button>
     </dialog>
     <script>
         function openModal(src) {
