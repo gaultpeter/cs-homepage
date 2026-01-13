@@ -168,8 +168,15 @@ export default {
             margin-bottom: 10px;
             background: var(--surface);
             border: 1px solid var(--border);
-            padding: 10px;
+            padding: 20px;
             border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .map-details summary:hover {
+            border-color: var(--accent);
+            background: #161b22;
+            transform: translateY(-2px);
         }
 
         .map-details > div {
