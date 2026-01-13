@@ -226,6 +226,7 @@ export default {
             cursor: pointer;
             font-size: 1.5rem;
             line-height: 1;
+            z-index: 10;
         }
 
         .close-modal:hover {
@@ -522,7 +523,7 @@ export default {
             </div>
         </details>
     </div>
-    <dialog id="image-modal">
+    <dialog id="image-modal" style="display: none;">
         <img id="modal-image" src="" alt="">
         <div class="close-modal" onclick="closeModal()">×</div>
     </dialog>
@@ -534,6 +535,11 @@ export default {
         function closeModal() {
             document.getElementById('image-modal').close();
         }
+        document.getElementById('image-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
