@@ -9,12 +9,17 @@ binding = "ASSETS"
 [observability]
 enabled = true
 
-# ADD THIS SECTION BELOW
+# Production Routes (Only active on 'wrangler deploy')
 [[routes]]
 pattern = "cs2-homepage.uk"
 custom_domain = true
 
-# Optional: If you want www.yourname.uk to work too
 [[routes]]
 pattern = "www.cs2-homepage.uk"
 custom_domain = true
+
+# --- Preview Environment ---
+# Run 'wrangler deploy -e preview' to use this
+[env.preview]
+name = "cs-homepage-preview"
+# We exclude [[routes]] here so it uses the workers.dev URL for testing
