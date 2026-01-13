@@ -543,7 +543,7 @@ export default {
     <div id="image-modal" style="display: none;">
         <img id="modal-image" src="" alt="">
         <button class="close-modal" onclick="closeModal()">×</button>
-        <p class="zoom-tip">Hold Ctrl and hover to zoom</p>
+        <p class="zoom-tip">Hold Shift and hover to zoom</p>
     </div>
     <script>
         function openModal(src) {
@@ -561,7 +561,7 @@ export default {
         // Zoom on Ctrl + hover in modal
         let isZoomed = false;
         document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
-            if (e.ctrlKey) {
+            if (e.shiftKey) {
                 isZoomed = true;
                 updateZoom(e);
             }
