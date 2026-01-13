@@ -145,11 +145,11 @@ export default {
 
         .map-details summary {
             cursor: pointer;
-            font-size: 1rem;
-            color: var(--accent);
-            font-weight: 600;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
@@ -188,6 +188,48 @@ export default {
 
         .cheat-image-wrapper:hover .cheat-image {
             transform: scale(1.05);
+        }
+
+        dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        dialog img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            background: var(--border);
         }
 
         @media (max-width: 600px) {
@@ -271,43 +313,43 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">A Donut</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-ADonut.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-ADonut.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">B Doors</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-BDoors.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-BDoors.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Cave</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-Cave.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-Cave.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Elbow</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-Elbow.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-Elbow.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Extinguish</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-Extinguish.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-Extinguish.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Mid Donut</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-Mid-Donut.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-Mid-Donut.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Red Room</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/Ancient-Red-Room.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/ancient/Ancient-Red-Room.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -318,19 +360,19 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Instant Ebox Mid</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/anubis/anubis-instant-ebox-mid.png" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/anubis/anubis-instant-ebox-mid.png" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Rugs</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/anubis/Anubis-Rugs.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/anubis/Anubis-Rugs.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">T Stairs</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/anubis/Anubis-TStairs.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/anubis/Anubis-TStairs.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -341,25 +383,25 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Mid Doors 1</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/dust2/Dust2-Mid-Doors1.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/dust2/Dust2-Mid-Doors1.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Mid Doors 2</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/dust2/Dust2-Mid-Doors2.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/dust2/Dust2-Mid-Doors2.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Spawns</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/dust2/dust2-spawns.png" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/dust2/dust2-spawns.png" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Smokes Last 5 Spawns</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/dust2/dust2smokeslast5spawns.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/dust2/dust2smokeslast5spawns.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -370,7 +412,7 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Fa Ze</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/inferno/Inferno-Fa-Ze.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/inferno/Inferno-Fa-Ze.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -381,37 +423,37 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Astralis</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Astralis.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-Astralis.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">B Short Boost</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-BShort-Boost.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-BShort-Boost.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Con</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Con.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-Con.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Instant Top Mid</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Instant-Top-Mid.png" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-Instant-Top-Mid.png" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Top Con</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Top-Con.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-Top-Con.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Window</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Window.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/mirage/Mirage-Window.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -422,13 +464,13 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Heaven</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/nuke/Nuke-Heaven.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/nuke/Nuke-Heaven.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Vent Lurk</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/nuke/Nuke-Vent-Lurk.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/nuke/Nuke-Vent-Lurk.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -439,13 +481,13 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Instant Fountain</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/overpass/Overpass-Instant-Fountain.png" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/overpass/Overpass-Instant-Fountain.png" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Monster</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/overpass/Overpass-Monster.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/overpass/Overpass-Monster.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -456,30 +498,43 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">A Main</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/train/Train-AMain.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/train/Train-AMain.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Bombtrain</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/train/Train-Bombtrain.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/train/Train-Bombtrain.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Gate</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/train/Train-Gate.jpg" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/train/Train-Gate.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Sandwich</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/train/Train-Sandwich.png" class="cheat-image" loading="lazy">
+                        <img src="/cheat-sheet/train/Train-Sandwich.png" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
         </details>
     </div>
+    <dialog id="image-modal">
+        <img id="modal-image" src="" alt="">
+        <div class="close-modal" onclick="closeModal()">×</div>
+    </dialog>
+    <script>
+        function openModal(src) {
+            document.getElementById('modal-image').src = src;
+            document.getElementById('image-modal').showModal();
+        }
+        function closeModal() {
+            document.getElementById('image-modal').close();
+        }
+    </script>
 </body>
 </html>
 `;
