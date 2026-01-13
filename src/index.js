@@ -320,7 +320,7 @@ export default {
 
 
         <div class="section-header">
-            <h2>Instant Smokes</h2>
+            <h2>Spawn line ups</h2>
 
         </div>
         <details class="map-details">
