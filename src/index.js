@@ -209,6 +209,19 @@ export default {
             object-fit: contain;
         }
 
+        .zoom-tip {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin: 0;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
         .close-modal {
             position: absolute;
             top: 20px;
@@ -230,7 +243,7 @@ export default {
             padding: 0;
             z-index: 10;
 
-            transform: translateY(1px);
+            padding-bottom: 3px;
         }
 
         .close-modal:hover {
@@ -530,6 +543,7 @@ export default {
     <div id="image-modal" style="display: none;">
         <img id="modal-image" src="" alt="">
         <button class="close-modal" onclick="closeModal()">×</button>
+        <p class="zoom-tip">Hold Ctrl and hover to zoom</p>
     </div>
     <script>
         function openModal(src) {
@@ -543,6 +557,16 @@ export default {
             if (event.target === this) {
                 closeModal();
             }
+        });
+        // Zoom on Ctrl + hover in modal
+        document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
+            if (e.ctrlKey) {
+                e.target.style.transform = 'scale(2)';
+                e.target.style.transition = 'transform 0.2s ease';
+            }
+        });
+        document.getElementById('modal-image').addEventListener('mouseleave', (e) => {
+            e.target.style.transform = '';
         });
     </script>
 </body>
