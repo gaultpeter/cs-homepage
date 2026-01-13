@@ -219,8 +219,11 @@ export default {
             border-radius: 50%;
             width: 40px;
             height: 40px;
-            text-align: center;
-            line-height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             cursor: pointer;
             font-size: 24px;
             z-index: 10;
