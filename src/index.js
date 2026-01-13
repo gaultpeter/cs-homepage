@@ -179,7 +179,7 @@ export default {
         }
 
         .map-details[open] > div {
-            max-height: 2000px;
+            max-height: 10000px;
         }
 
         .cheat-grid {
@@ -320,6 +320,18 @@ export default {
             <summary>Ancient</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
+                    <span class="cheat-label">CT</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/ancient/ancient-ct.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">T</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/ancient/ancient-t.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
                     <span class="cheat-label">A Donut</span>
                     <div class="cheat-image-wrapper">
                         <img src="/cheat-sheet/ancient/Ancient-ADonut.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
@@ -359,18 +371,6 @@ export default {
                     <span class="cheat-label">Red Room</span>
                     <div class="cheat-image-wrapper">
                         <img src="/cheat-sheet/ancient/Ancient-Red-Room.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
-                    </div>
-                </div>
-                <div class="cheat-item">
-                    <span class="cheat-label">CT</span>
-                    <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/ancient-ct.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
-                    </div>
-                </div>
-                <div class="cheat-item">
-                    <span class="cheat-label">T</span>
-                    <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/ancient/ancient-t.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -431,15 +431,15 @@ export default {
             <summary>Inferno</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
-                    <span class="cheat-label">Faze</span>
-                    <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/inferno/Inferno-Faze.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
-                    </div>
-                </div>
-                <div class="cheat-item">
                     <span class="cheat-label">G2</span>
                     <div class="cheat-image-wrapper">
                         <img src="/cheat-sheet/inferno/inferno-g2.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">Faze</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/inferno/Inferno-Faze.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -447,6 +447,12 @@ export default {
         <details class="map-details">
             <summary>Mirage</summary>
             <div class="cheat-grid">
+                <div class="cheat-item">
+                    <span class="cheat-label">Window</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/mirage/mirage-window.webp" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
                 <div class="cheat-item">
                     <span class="cheat-label">Astralis</span>
                     <div class="cheat-image-wrapper">
@@ -475,12 +481,6 @@ export default {
                     <span class="cheat-label">Top Con</span>
                     <div class="cheat-image-wrapper">
                         <img src="/cheat-sheet/mirage/Mirage-Top-Con.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
-                    </div>
-                </div>
-                <div class="cheat-item">
-                    <span class="cheat-label">Window</span>
-                    <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/mirage-window.webp" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
