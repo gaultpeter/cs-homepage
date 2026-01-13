@@ -143,9 +143,15 @@ export default {
         .credit-box {
             border: 1px solid var(--border);
             background: var(--surface);
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+
+        .credit-box p {
+            margin: 0 0 8px 0;
+            font-size: 0.8rem;
+            color: var(--text-dim);
         }
 
         .map-details {
@@ -166,17 +172,14 @@ export default {
             border-radius: 8px;
         }
 
-        .map-details[open] {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+        .map-details > div {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
-        .map-details[open] .cheat-grid {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-top: none;
-            border-radius: 0 0 8px 8px;
-            padding: 15px;
+        .map-details[open] > div {
+            max-height: 2000px;
         }
 
         .cheat-grid {
