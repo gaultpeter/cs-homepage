@@ -641,6 +641,13 @@ export default {
             e.target.style.transform = 'scale(2)';
             e.target.style.transition = 'none';
         }
+
+        // ESC to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
