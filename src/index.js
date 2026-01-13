@@ -350,7 +350,6 @@ export default {
                     </div>
                 </div>
             </div>
-            <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
             <summary>Anubis</summary>
@@ -420,7 +419,6 @@ export default {
                     </div>
                 </div>
             </div>
-            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
             <summary>Mirage</summary>
@@ -468,7 +466,6 @@ export default {
                     </div>
                 </div>
             </div>
-            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a>
         </details>
         <details class="map-details">
             <summary>Nuke</summary>
@@ -509,7 +506,6 @@ export default {
                     </div>
                 </div>
             </div>
-            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
             <summary>Train</summary>
@@ -541,6 +537,8 @@ export default {
             </div>
         </details>
         <div style="text-align: left; margin-top: 20px;">
+            <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a><br>
+            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a><br>
             <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">/u/OliverSauce</a>
         </div>
     </div>
