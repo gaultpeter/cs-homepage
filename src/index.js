@@ -559,15 +559,34 @@ export default {
             }
         });
         // Zoom on Ctrl + hover in modal
+        let isZoomed = false;
         document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
             if (e.ctrlKey) {
-                e.target.style.transform = 'scale(2)';
-                e.target.style.transition = 'transform 0.2s ease';
+                isZoomed = true;
+                updateZoom(e);
+            }
+        });
+        document.getElementById('modal-image').addEventListener('mousemove', (e) => {
+            if (isZoomed) {
+                updateZoom(e);
             }
         });
         document.getElementById('modal-image').addEventListener('mouseleave', (e) => {
+            isZoomed = false;
             e.target.style.transform = '';
+            e.target.style.transformOrigin = '';
+            e.target.style.transition = 'transform 0.2s ease';
         });
+        function updateZoom(e) {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+            e.target.style.transformOrigin = xPercent + '% ' + yPercent + '%';
+            e.target.style.transform = 'scale(2)';
+            e.target.style.transition = 'none';
+        }
     </script>
 </body>
 </html>
