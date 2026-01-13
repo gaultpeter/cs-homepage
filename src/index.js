@@ -226,10 +226,11 @@ export default {
 
             cursor: pointer;
             font-size: 24px;
-            z-index: 10;
-            padding: 0;
             font-family: inherit;
-            padding-top: 1px;
+            padding: 0;
+            z-index: 10;
+
+            transform: translateY(1px);
         }
 
         .close-modal:hover {
