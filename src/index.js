@@ -520,7 +520,7 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Monster</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/overpass/overpass-monster.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                        <img src="/cheat-sheet/overpass/overpass-monster-1.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
                 <div class="cheat-item">
