@@ -147,11 +147,15 @@ export default {
         .map-details summary {
             cursor: pointer;
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--text-main);
             font-weight: 600;
-            text-transform: uppercase;
+            text-transform: capitalize;
             letter-spacing: 0.05em;
             margin-bottom: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 8px;
         }
 
         .cheat-grid {
@@ -282,53 +286,14 @@ export default {
             <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
         </div>
 
-        <div class="section-header">
-            <h2>Instant Smokes</h2>
-        </div>
-        <div class="smoke-container">
-            <div class="smoke-item">
-                <span class="smoke-label">Ancient CT</span>
-                <div class="smoke-image-wrapper">
-                    <img src="/insta-smoke/ancient-ct.jpg" class="smoke-image" loading="lazy" onclick="openModal(this.src)">
-                </div>
-                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
-            </div>
-            <div class="smoke-item">
-                <span class="smoke-label">Ancient T</span>
-                <div class="smoke-image-wrapper">
-                    <img src="/insta-smoke/ancient-t.jpg" class="smoke-image" loading="lazy" onclick="openModal(this.src)">
-                </div>
-                <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
-            </div>
-            <div class="smoke-item">
-                <span class="smoke-label">Mirage</span>
-                <div class="smoke-image-wrapper">
-                    <img src="/insta-smoke/mirage.webp" class="smoke-image" loading="lazy" onclick="openModal(this.src)">
-                </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a>
-            </div>
-            <div class="smoke-item">
-                <span class="smoke-label">Inferno</span>
-                <div class="smoke-image-wrapper">
-                    <img src="/insta-smoke/inferno.jpg" class="smoke-image" loading="lazy" onclick="openModal(this.src)">
-                </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
-            </div>
-            <div class="smoke-item">
-                <span class="smoke-label">Overpass</span>
-                <div class="smoke-image-wrapper">
-                    <img src="/insta-smoke/overpass.jpg" class="smoke-image" loading="lazy" onclick="openModal(this.src)">
-                </div>
-                <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
-            </div>
-        </div>
+
 
         <div class="section-header">
-            <h2>Cheat Sheets</h2>
+            <h2>Instant Smokes</h2>
 
         </div>
         <details class="map-details">
-            <summary>Ancient Cheat Sheets</summary>
+            <summary>Ancient</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">A Donut</span>
@@ -372,10 +337,23 @@ export default {
                         <img src="/cheat-sheet/ancient/Ancient-Red-Room.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">CT</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/ancient/ancient-ct.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">T</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/ancient/ancient-t.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
             </div>
+            <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
-            <summary>Anubis Cheat Sheets</summary>
+            <summary>Anubis</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">Instant Ebox Mid</span>
@@ -398,7 +376,7 @@ export default {
             </div>
         </details>
         <details class="map-details">
-            <summary>Dust 2 Cheat Sheets</summary>
+            <summary>Dust 2</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">Mid Doors 1</span>
@@ -427,18 +405,25 @@ export default {
             </div>
         </details>
         <details class="map-details">
-            <summary>Inferno Cheat Sheets</summary>
+            <summary>Inferno</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
-                    <span class="cheat-label">Fa Ze</span>
+                    <span class="cheat-label">Faze</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/inferno/Inferno-Fa-Ze.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                        <img src="/cheat-sheet/inferno/Inferno-Faze.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">G2</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/inferno/inferno-g2.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
+            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
-            <summary>Mirage Cheat Sheets</summary>
+            <summary>Mirage</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">Astralis</span>
@@ -473,13 +458,20 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Window</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/mirage/Mirage-Window.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                        <img src="/cheat-sheet/mirage/mirage-window.webp" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">Window Alt</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/mirage/Mirage-Window-alt.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
+            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a>
         </details>
         <details class="map-details">
-            <summary>Nuke Cheat Sheets</summary>
+            <summary>Nuke</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">Heaven</span>
@@ -496,7 +488,7 @@ export default {
             </div>
         </details>
         <details class="map-details">
-            <summary>Overpass Cheat Sheets</summary>
+            <summary>Overpass</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">Instant Fountain</span>
@@ -507,13 +499,20 @@ export default {
                 <div class="cheat-item">
                     <span class="cheat-label">Monster</span>
                     <div class="cheat-image-wrapper">
-                        <img src="/cheat-sheet/overpass/Overpass-Monster.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                        <img src="/cheat-sheet/overpass/overpass-monster.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
+                    </div>
+                </div>
+                <div class="cheat-item">
+                    <span class="cheat-label">Monster Alt</span>
+                    <div class="cheat-image-wrapper">
+                        <img src="/cheat-sheet/overpass/Overpass-Monster-alt.jpg" class="cheat-image" loading="lazy" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
+            <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/synobazz</a>
         </details>
         <details class="map-details">
-            <summary>Train Cheat Sheets</summary>
+            <summary>Train</summary>
             <div class="cheat-grid">
                 <div class="cheat-item">
                     <span class="cheat-label">A Main</span>
