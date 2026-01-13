@@ -146,11 +146,11 @@ export default {
 
         .map-details summary {
             cursor: pointer;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dim);
+            font-size: 0.85rem;
+            color: var(--accent);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 10px;
         }
 
