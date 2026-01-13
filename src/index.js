@@ -542,6 +542,10 @@ export default {
                 closeModal();
             }
         });
+        // Ensure modal is closed on page load
+        window.addEventListener('load', () => {
+            document.getElementById('image-modal').close();
+        });
     </script>
 </body>
 </html>
