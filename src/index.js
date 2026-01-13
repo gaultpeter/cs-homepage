@@ -52,7 +52,8 @@ export default {
 
         .section-header { 
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             margin: 40px 0 20px; 
         }
 
@@ -324,6 +325,7 @@ export default {
 
         <div class="section-header">
             <h2>Cheat Sheets</h2>
+            <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">/u/OliverSauce</a>
         </div>
         <details class="map-details">
             <summary>Ancient Cheat Sheets</summary>
