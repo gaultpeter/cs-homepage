@@ -541,8 +541,8 @@ export default {
                 </div>
             </div>
         </details>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">Credit: /u/OliverSauce</a>
+        <div style="text-align: left; margin-top: 20px;">
+            <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">/u/OliverSauce</a>
         </div>
     </div>
     <div id="image-modal" style="display: none;">
