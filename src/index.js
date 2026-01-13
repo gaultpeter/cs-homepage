@@ -140,6 +140,14 @@ export default {
             color: var(--accent);
         }
 
+        .credit-box {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
         .map-details {
             margin-bottom: 20px;
         }
@@ -156,6 +164,19 @@ export default {
             border: 1px solid var(--border);
             padding: 10px;
             border-radius: 8px;
+        }
+
+        .map-details[open] {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .map-details[open] .cheat-grid {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 15px;
         }
 
         .cheat-grid {
@@ -536,7 +557,8 @@ export default {
                 </div>
             </div>
         </details>
-        <div style="text-align: left; margin-top: 20px;">
+        <div class="credit-box" style="text-align: left; margin-top: 20px;">
+            <p>Thanks to:</p>
             <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a><br>
             <a href="https://reddit.com/r/GlobalOffensive/comments/1hudn72/i_made_an_updated_cheatsheet_for_the_new_mirage/" class="credit-link">/u/Daanoking</a><br>
             <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">/u/OliverSauce</a>
