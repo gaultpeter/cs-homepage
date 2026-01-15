@@ -361,7 +361,7 @@ export default {
         
         <div class="section-header">
             <h2>Nade Lineups</h2>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://csnades.gg" target="_blank" style="color: var(--accent); text-decoration: none;">csnades.gg</a></p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://csnades.gg" style="color: var(--accent); text-decoration: none;">csnades.gg</a></p>
         </div>
         <div class="grid">
             <a href="https://csnades.gg/mirage" class="card">Mirage</a>
@@ -375,7 +375,7 @@ export default {
 
         <div class="section-header">
             <h2>Warm Up</h2>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://cybershoke.net" target="_blank" style="color: var(--accent); text-decoration: none;">cybershoke.net</a></p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://cybershoke.net" style="color: var(--accent); text-decoration: none;">cybershoke.net</a></p>
         </div>
         <div class="grid" style="margin-bottom: 60px;">
             <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
@@ -718,7 +718,7 @@ export default {
             const query = document.getElementById('search-input').value.trim();
             if (query) {
                 const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-                window.open(searchUrl, '_blank');
+                window.location.href = searchUrl;
                 document.getElementById('search-input').value = '';
             }
         }
