@@ -286,17 +286,82 @@ export default {
             background: var(--border);
         }
 
+        .search-container {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            max-width: 400px;
+            padding: 12px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .search-button {
+            padding: 12px 24px;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: #0a0c10;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .search-button:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
+            .search-form {
+                flex-direction: column;
+            }
+            .search-input {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Counter Strike 2</h1>
+        <div class="search-container">
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-input" id="search-input" placeholder="Search Google..." />
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
         
         <div class="section-header">
             <h2>Nade Lineups</h2>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://csnades.gg" target="_blank" style="color: var(--accent); text-decoration: none;">csnades.gg</a></p>
         </div>
         <div class="grid">
             <a href="https://csnades.gg/mirage" class="card">Mirage</a>
@@ -310,18 +375,16 @@ export default {
 
         <div class="section-header">
             <h2>Warm Up</h2>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://cybershoke.net" target="_blank" style="color: var(--accent); text-decoration: none;">cybershoke.net</a></p>
         </div>
         <div class="grid" style="margin-bottom: 60px;">
-            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multi-cfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
+            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multicfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
         </div>
-
-
-
+        
         <div class="section-header">
             <h2>Spawn Line Ups</h2>
-
         </div>
         <details class="map-details">
             <summary>Ancient</summary>
@@ -648,6 +711,17 @@ export default {
                 closeModal();
             }
         });
+
+        // Google Search functionality
+        function handleSearch(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                window.open(searchUrl, '_blank');
+                document.getElementById('search-input').value = '';
+            }
+        }
     </script>
 </body>
 </html>
