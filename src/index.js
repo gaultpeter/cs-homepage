@@ -361,6 +361,7 @@ export default {
         
         <div class="section-header">
             <h2>Nade Lineups</h2>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://csnades.gg" target="_blank" style="color: var(--accent); text-decoration: none;">csnades.gg</a></p>
         </div>
         <div class="grid">
             <a href="https://csnades.gg/mirage" class="card">Mirage</a>
