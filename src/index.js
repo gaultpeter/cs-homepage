@@ -382,9 +382,7 @@ export default {
             <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multicfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
         </div>
-
-
-
+        
         <div class="section-header">
             <h2>Spawn Line Ups</h2>
         </div>
