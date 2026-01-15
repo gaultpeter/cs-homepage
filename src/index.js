@@ -352,8 +352,6 @@ export default {
 </head>
 <body>
     <div class="container">
-        <h1>Counter Strike 2</h1>
-        
         <div class="search-container">
             <form class="search-form" onsubmit="handleSearch(event)">
                 <input type="text" class="search-input" id="search-input" placeholder="Search Google..." />
@@ -378,20 +376,15 @@ export default {
             <h2>Warm Up</h2>
         </div>
         <div class="grid" style="margin-bottom: 60px;">
-            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multi-cfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
+            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multicfg DM</a>
             <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
         </div>
 
 
 
         <div class="section-header">
-<<<<<<< HEAD
-            <h2>Spawn line ups</h2>
-=======
             <h2>Spawn Line Ups</h2>
->>>>>>> f4791b8237b0e69bbdbf2836d399e05234fe5544
-
         </div>
         <details class="map-details">
             <summary>Ancient</summary>
