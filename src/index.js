@@ -375,6 +375,7 @@ export default {
 
         <div class="section-header">
             <h2>Warm Up</h2>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://cybershoke.net" target="_blank" style="color: var(--accent); text-decoration: none;">cybershoke.net</a></p>
         </div>
         <div class="grid" style="margin-bottom: 60px;">
             <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
