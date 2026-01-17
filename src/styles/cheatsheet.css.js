@@ -131,9 +131,22 @@ export const cheatsheetStyles = `
         justify-content: center;
     }
 
+    .modal-image-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px; /* Safe zone */
+        max-width: 95vw;
+        max-height: 95vh;
+        box-sizing: border-box;
+    }
+
     #image-modal img {
         max-width: 90vw;
         max-height: 90vh;
+        width: auto;
+        height: auto;
         object-fit: contain;
     }
 

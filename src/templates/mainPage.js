@@ -69,11 +69,13 @@ export const createMainPageHtml = () => {
         </div>
     </div>
     <div id="image-modal" style="display: none;">
-        <img id="modal-image" src="" alt="">
+        <div id="modal-image-wrapper" class="modal-image-wrapper">
+            <img id="modal-image" src="" alt="">
+        </div>
         <button class="close-modal" onclick="closeModal()">×</button>
         <p class="zoom-tip">Hold Shift and hover to zoom</p>
     </div>
-
+    
     <div id="request-dialog">
         <div class="dialog-content">
             <div class="dialog-header">
@@ -120,50 +122,48 @@ export const createMainPageHtml = () => {
         let isZoomed = false;
         let isMouseOver = false;
         let lastMouseEvent = null;
-        document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
-            isMouseOver = true;
-            lastMouseEvent = e;
-            if (e.shiftKey) {
-                isZoomed = true;
-                updateZoom(e);
-            }
-        });
-        document.getElementById('modal-image').addEventListener('mousemove', (e) => {
+        
+        // Listeners for zoom behavior
+        const wrapper = document.getElementById('modal-image-wrapper');
+        const img = document.getElementById('modal-image');
+
+        // Start tracking only when in the modal
+        document.getElementById('image-modal').addEventListener('mousemove', (e) => {
             lastMouseEvent = e;
             if (isZoomed) {
                 updateZoom(e);
             }
         });
-        document.getElementById('modal-image').addEventListener('mouseleave', (e) => {
-            isMouseOver = false;
-            isZoomed = false;
-            e.target.style.transform = '';
-            e.target.style.transformOrigin = '';
-            e.target.style.transition = 'transform 0.2s ease';
-        });
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Shift' && isMouseOver && !isZoomed) {
-                isZoomed = true;
-                updateZoom(lastMouseEvent);
+            if (e.key === 'Shift') {
+                // If modal is open
+                if (document.getElementById('image-modal').style.display === 'flex') {
+                    isZoomed = true;
+                    updateZoom(lastMouseEvent || { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+                }
             }
         });
+
         document.addEventListener('keyup', (e) => {
             if (e.key === 'Shift') {
                 isZoomed = false;
-                document.getElementById('modal-image').style.transform = '';
-                document.getElementById('modal-image').style.transformOrigin = '';
-                document.getElementById('modal-image').style.transition = 'transform 0.2s ease';
+                img.style.transform = '';
+                img.style.transformOrigin = '';
+                img.style.transition = 'transform 0.2s ease';
             }
         });
+
         function updateZoom(e) {
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const xPercent = (x / rect.width) * 100;
-            const yPercent = (y / rect.height) * 100;
-            e.target.style.transformOrigin = xPercent + '% ' + yPercent + '%';
-            e.target.style.transform = 'scale(2)';
-            e.target.style.transition = 'none';
+            // Calculate percentage across the entire window
+            // This allows zooming by pointing anywhere on screen
+            const xPercent = (e.clientX / window.innerWidth) * 100;
+            const yPercent = (e.clientY / window.innerHeight) * 100;
+
+            // Apply transform to the IMAGE
+            img.style.transformOrigin = xPercent + '% ' + yPercent + '%';
+            img.style.transform = 'scale(2)';
+            img.style.transition = 'none';
         }
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
