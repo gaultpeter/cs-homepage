@@ -56,3 +56,14 @@ npx wrangler tail
 -   `public/`: Static image assets and thumbnails.
 -   `wrangler.toml`: Cloudflare environment configuration.
 
+## Maintenance
+
+### Cache Invalidation
+The site uses aggressive 1-year caching for images to maximize performance. If you update an image, you must manually invalidate user caches by incrementing the version number.
+
+1.  Open `src/templates/components/cheatSheets.js`.
+2.  Update the `ASSET_VERSION` constant (e.g., change `'v=1'` to `'v=2'`).
+3.  Deploy the changes.
+
+This appends a query parameter (e.g., `image.jpg?v=2`) to all image requests, forcing browsers and the CDN to fetch the new version.
+
