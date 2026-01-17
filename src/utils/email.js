@@ -1,16 +1,16 @@
-export const sendRequestEmail = async (env, title, description) => {
-  console.log('=== sendRequestEmail called ===');
-  console.log('env object:', env);
+export const sendRequestEmail = async (env, title, description, debugLog = []) => {
+  debugLog.push('=== sendRequestEmail called ===');
+  debugLog.push(`env object keys: ${Object.keys(env).join(', ')}`);
   const apiKey = env.RESEND_API_KEY;
   
-  console.log('API Key exists:', !!apiKey);
-  console.log('API Key type:', typeof apiKey);
-  console.log('API Key length:', apiKey ? apiKey.length : 0);
-  console.log('API Key starts with:', apiKey ? apiKey.substring(0, 10) : 'N/A');
+  debugLog.push(`API Key exists: ${!!apiKey}`);
+  debugLog.push(`API Key type: ${typeof apiKey}`);
+  debugLog.push(`API Key length: ${apiKey ? apiKey.length : 0}`);
+  debugLog.push(`API Key preview: ${apiKey ? apiKey.substring(0, 10) + '...' : 'N/A'}`);
   
   if (!apiKey) {
-    console.error('RESEND_API_KEY is missing');
-    return false;
+    debugLog.push('ERROR: RESEND_API_KEY is missing from env');
+    return { success: false, debug: debugLog };
   }
 
   try {
@@ -28,8 +28,8 @@ export const sendRequestEmail = async (env, title, description) => {
       `,
     };
     
-    console.log('Request payload:', JSON.stringify(payload));
-    console.log('Calling Resend API...');
+    debugLog.push(`Payload size: ${JSON.stringify(payload).length} bytes`);
+    debugLog.push('Calling Resend API at https://api.resend.com/emails...');
     
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -40,23 +40,22 @@ export const sendRequestEmail = async (env, title, description) => {
       body: JSON.stringify(payload),
     });
 
-    console.log('Response status:', response.status);
-    console.log('Response headers:', response.headers);
+    debugLog.push(`Response status: ${response.status}`);
+    debugLog.push(`Response status text: ${response.statusText}`);
     
     const responseText = await response.text();
-    console.log('Response body:', responseText);
+    debugLog.push(`Response body: ${responseText}`);
 
     if (!response.ok) {
-      console.error('Resend API returned error:', response.status, responseText);
-      return false;
+      debugLog.push(`ERROR: Resend API returned ${response.status}`);
+      return { success: false, debug: debugLog };
     }
 
-    console.log('Email sent successfully!');
-    return true;
+    debugLog.push('SUCCESS: Email sent to Resend!');
+    return { success: true, debug: debugLog };
   } catch (error) {
-    console.error('Fetch error:', error);
-    console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
-    return false;
+    debugLog.push(`FETCH ERROR: ${error.message}`);
+    debugLog.push(`Error stack: ${error.stack}`);
+    return { success: false, debug: debugLog };
   }
 };
