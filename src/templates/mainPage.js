@@ -6,7 +6,7 @@ import { getWarmupHtml } from './components/warmup.js';
 import { getCheatSheetsHtml } from './components/cheatSheets.js';
 
 export const createMainPageHtml = () => {
-  return `
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +96,12 @@ export const createMainPageHtml = () => {
             </form>
         </div>
     </div>
+
+    <div id="success-toast" class="success-toast">
+        <span class="checkmark">✓</span>
+        <span>Request submitted!</span>
+    </div>
+
     <script>
         // Modal functions
         function openModal(src) {
@@ -212,7 +218,7 @@ export const createMainPageHtml = () => {
 
                 if (response.ok) {
                     closeRequestDialog();
-                    alert('Request submitted successfully!');
+                    showSuccessToast();
                     document.getElementById('request-form').reset();
                 } else {
                     alert('Failed to submit request');
@@ -221,6 +227,15 @@ export const createMainPageHtml = () => {
                 console.error('Error:', error);
                 alert('Error submitting request');
             }
+        }
+
+        // Success Toast
+        function showSuccessToast() {
+            const toast = document.getElementById('success-toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
         }
 
         // Close dialog with ESC key

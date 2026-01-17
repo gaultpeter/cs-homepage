@@ -18,8 +18,3 @@ custom_domain = true
 
 [observability]
 enabled = true
-
-# Secrets Store binding for Resend API key
-secrets_store_secrets = [
-  { binding = "RESEND_API_KEY", store_id = "35dc1a23a2064823bc4735195ce6bade", secret_name = "RESEND_API_KEY" }
-]

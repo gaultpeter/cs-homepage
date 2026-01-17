@@ -2,13 +2,8 @@ export const sendRequestEmail = async (env, title, description, debugLog = []) =
   debugLog.push('=== sendRequestEmail called ===');
   debugLog.push(`env object keys: ${Object.keys(env).join(', ')}`);
 
-  let apiKey;
-  try {
-    // Secrets Store bindings require calling .get() to retrieve the secret value
-    apiKey = await env.RESEND_API_KEY.get();
-  } catch (error) {
-    debugLog.push(`Error getting secret: ${error.message}`);
-  }
+  // Access the secret directly from env (set via wrangler secret put)
+  const apiKey = env.RESEND_API_KEY;
 
   debugLog.push(`API Key exists: ${!!apiKey}`);
   debugLog.push(`API Key type: ${typeof apiKey}`);
