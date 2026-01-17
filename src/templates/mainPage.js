@@ -112,6 +112,7 @@ export const createMainPageHtml = () => {
         }
         function closeModal() {
             document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-image').src = '';
         }
         document.getElementById('image-modal').addEventListener('click', function(event) {
             if (event.target === this) {
