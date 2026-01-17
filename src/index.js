@@ -214,19 +214,32 @@ export default {
 
     // Handle /requests POST (add new request)
     if (url.pathname === '/requests' && request.method === 'POST') {
-      const data = await request.json();
-      const id = Date.now().toString();
-      const requestData = {
-        id,
-        title: data.title,
-        description: data.description || '',
-        timestamp: new Date().toISOString()
-      };
-      await env.REQUESTS_KV.put(id, JSON.stringify(requestData));
-      return new Response(JSON.stringify({ success: true, id }), { 
-        headers: { 'Content-Type': 'application/json' },
-        status: 201
-      });
+      try {
+        console.log('POST /requests - env:', Object.keys(env));
+        console.log('POST /requests - REQUESTS_KV exists:', !!env.REQUESTS_KV);
+        const data = await request.json();
+        console.log('POST /requests - data:', data);
+        const id = Date.now().toString();
+        const requestData = {
+          id,
+          title: data.title,
+          description: data.description || '',
+          timestamp: new Date().toISOString()
+        };
+        console.log('POST /requests - putting to KV:', id);
+        await env.REQUESTS_KV.put(id, JSON.stringify(requestData));
+        console.log('POST /requests - success');
+        return new Response(JSON.stringify({ success: true, id }), { 
+          headers: { 'Content-Type': 'application/json' },
+          status: 201
+        });
+      } catch (error) {
+        console.error('POST /requests - error:', error);
+        return new Response(JSON.stringify({ error: error.message }), { 
+          headers: { 'Content-Type': 'application/json' },
+          status: 500
+        });
+      }
     }
 
     // Handle /requests DELETE (remove request)
