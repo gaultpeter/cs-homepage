@@ -9,7 +9,6 @@ binding = "ASSETS"
 [[kv_namespaces]]
 binding = "REQUESTS_KV"
 id = "requests-kv"
-preview_id = "requests-kv-preview"
 
 [observability]
 enabled = true
