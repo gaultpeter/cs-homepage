@@ -6,9 +6,6 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
-[env.production]
-vars = { RESEND_API_KEY = "re_NJKqWv1P_Mn5N5mw2aZca6gCEzRqjjHub" }
-
 [observability]
 enabled = true
 
