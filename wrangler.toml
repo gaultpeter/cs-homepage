@@ -6,10 +6,8 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
-[[kv_namespaces]]
-binding = "REQUESTS_KV"
-id = "c6b7f926d90443ea8455247237870ca3"
-preview_id = "c6b7f926d90443ea8455247237870ca3"
+[env.production]
+vars = { RESEND_API_KEY = "re_NJKqWv1P_Mn5N5mw2aZca6gCEzRqjjHub" }
 
 [observability]
 enabled = true

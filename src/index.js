@@ -10,9 +10,9 @@ export default {
       return env.ASSETS.fetch(request);
     }
 
-    // Handle /requests routes (GET, POST, DELETE)
-    if (url.pathname === '/requests') {
-      return await handleRequestsRoute(request, env, url);
+    // Handle POST /requests (feature request submissions)
+    if (url.pathname === '/requests' && request.method === 'POST') {
+      return await handleRequestsRoute(request, env);
     }
 
     // Main page - all other routes
