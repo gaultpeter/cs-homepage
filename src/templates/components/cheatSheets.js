@@ -1,4 +1,7 @@
 export const getCheatSheetsHtml = () => `
+        <div class="section-header">
+            <h2>Spawn Line Ups</h2>
+        </div>
         <details class="map-details">
             <summary>Ancient</summary>
             <div class="cheat-grid">

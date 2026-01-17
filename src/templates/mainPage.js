@@ -1,7 +1,9 @@
 import { commonStyles } from '../styles/common.css.js';
 import { dialogStyles } from '../styles/dialog.css.js';
 import { cheatsheetStyles } from '../styles/cheatsheet.css.js';
-import { getCheatSheetsHtml } from './cheatSheets.html.js';
+import { getCsnadesHtml } from './components/csnades.js';
+import { getWarmupHtml } from './components/warmup.js';
+import { getCheatSheetsHtml } from './components/cheatSheets.js';
 
 export const createMainPageHtml = () => {
   return `
@@ -55,34 +57,10 @@ export const createMainPageHtml = () => {
             </form>
         </div>
         
-        <div class="section-header">
-            <h2>Nade Lineups</h2>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://csnades.gg" style="color: var(--accent); text-decoration: none;">csnades.gg</a></p>
-        </div>
-        <div class="grid">
-            <a href="https://csnades.gg/mirage" class="card">Mirage</a>
-            <a href="https://csnades.gg/dust2" class="card">Dust 2</a>
-            <a href="https://csnades.gg/inferno" class="card">Inferno</a>
-            <a href="https://csnades.gg/overpass" class="card">Overpass</a>
-            <a href="https://csnades.gg/nuke" class="card">Nuke</a>
-            <a href="https://csnades.gg/ancient" class="card">Ancient</a>
-            <a href="https://csnades.gg/anubis" class="card">Anubis</a>
-        </div>
-
-        <div class="section-header">
-            <h2>Warm Up</h2>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 0 0 0; font-weight: 400;">via <a href="https://cybershoke.net" style="color: var(--accent); text-decoration: none;">cybershoke.net</a></p>
-        </div>
-        <div class="grid" style="margin-bottom: 60px;">
-            <a href="https://cybershoke.net/cs2/servers/dm" class="card">Standard DM</a>
-            <a href="https://cybershoke.net/cs2/servers/multicfgdm" class="card">Multicfg DM</a>
-            <a href="https://cybershoke.net/cs2/servers/retake" class="card">Retakes</a>
-        </div>
-        
-        <div class="section-header">
-            <h2>Spawn Line Ups</h2>
-        </div>
+        ${getCsnadesHtml()}
+        ${getWarmupHtml()}
         ${getCheatSheetsHtml()}
+
         <div class="credit-box" style="text-align: left; margin-top: 20px;">
             <p>Thanks to:</p>
             <a href="https://reddit.com/r/cs2/comments/1muco3t/cheat_sheets_for_instant_spawn_smokes_on_ancient/" class="credit-link">/u/synobazz</a><br>

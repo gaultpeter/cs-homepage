@@ -6,7 +6,7 @@ export default {
     const url = new URL(request.url);
     
     // Serve static assets (images) from the /public folder
-    if (url.pathname.startsWith('/insta-smoke/') || url.pathname.startsWith('/cheat-sheet/')) {
+    if (url.pathname.startsWith('/cheat-sheet/')) {
       return env.ASSETS.fetch(request);
     }
 
@@ -15,7 +15,7 @@ export default {
       return await handleRequestsRoute(request, env, url);
     }
 
-    // Main page
+    // Main page - all other routes
     const html = createMainPageHtml();
     return new Response(html, { headers: { 'content-type': 'text/html;charset=UTF-8' } });
   },
