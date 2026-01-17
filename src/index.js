@@ -11,7 +11,8 @@ export default {
       const newResponse = new Response(response.body, response);
 
       // Cache for 1 year (immutable) as we want aggressive caching for these static assets
-      newResponse.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+      // s-maxage ensures Cloudflare Edge keeps it just as long
+      newResponse.headers.set('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, immutable');
       return newResponse;
     }
 
