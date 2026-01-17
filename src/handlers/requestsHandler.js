@@ -19,6 +19,9 @@ const handlePostRequest = async (request, env) => {
       });
     }
 
+    console.log('env keys:', Object.keys(env));
+    console.log('RESEND_API_KEY exists:', !!env.RESEND_API_KEY);
+
     const emailSent = await sendRequestEmail(env, title, description);
 
     if (emailSent) {
@@ -33,7 +36,7 @@ const handlePostRequest = async (request, env) => {
       });
     }
   } catch (error) {
-    console.error('POST /requests error:', error.message);
+    console.error('POST /requests error:', error.message, error.stack);
     return new Response(JSON.stringify({ error: error.message }), {
       headers: { 'Content-Type': 'application/json' },
       status: 500
