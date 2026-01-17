@@ -8,7 +8,7 @@ binding = "ASSETS"
 
 [[kv_namespaces]]
 binding = "REQUESTS_KV"
-id = "requests-kv"
+id = "c6b7f926d90443ea8455247237870ca3"
 
 [observability]
 enabled = true
