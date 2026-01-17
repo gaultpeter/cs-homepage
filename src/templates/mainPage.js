@@ -163,7 +163,7 @@ export const createMainPageHtml = () => {
 
             // Apply transform to the IMAGE
             img.style.transformOrigin = xPercent + '% ' + yPercent + '%';
-            img.style.transform = 'scale(2)';
+            img.style.transform = 'scale(15)';
             img.style.transition = 'none';
         }
         document.addEventListener('keydown', (e) => {
