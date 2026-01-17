@@ -6,9 +6,6 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
-[[env.default.secrets]]
-binding = "RESEND_API_KEY"
-
 [[routes]]
 pattern = "cs2-homepage.uk"
 zone_name = "cs2-homepage.uk"
@@ -21,3 +18,8 @@ custom_domain = true
 
 [observability]
 enabled = true
+
+# Secrets Store binding for Resend API key
+secrets_store_secrets = [
+  { binding = "RESEND_API_KEY", store_id = "35dc1a23a2064823bc4735195ce6bade", secret_name = "RESEND_API_KEY" }
+]

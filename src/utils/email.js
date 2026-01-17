@@ -1,19 +1,20 @@
 export const sendRequestEmail = async (env, title, description, debugLog = []) => {
   debugLog.push('=== sendRequestEmail called ===');
   debugLog.push(`env object keys: ${Object.keys(env).join(', ')}`);
-  
+
   let apiKey;
   try {
+    // Secrets Store bindings require calling .get() to retrieve the secret value
     apiKey = await env.RESEND_API_KEY.get();
   } catch (error) {
     debugLog.push(`Error getting secret: ${error.message}`);
   }
-  
+
   debugLog.push(`API Key exists: ${!!apiKey}`);
   debugLog.push(`API Key type: ${typeof apiKey}`);
   debugLog.push(`API Key length: ${apiKey ? apiKey.length : 0}`);
   debugLog.push(`API Key preview: ${apiKey ? apiKey.substring(0, 10) + '...' : 'N/A'}`);
-  
+
   if (!apiKey) {
     debugLog.push('ERROR: RESEND_API_KEY is missing from env');
     return { success: false, debug: debugLog };
@@ -33,10 +34,10 @@ export const sendRequestEmail = async (env, title, description, debugLog = []) =
         </div>
       `,
     };
-    
+
     debugLog.push(`Payload size: ${JSON.stringify(payload).length} bytes`);
     debugLog.push('Calling Resend API at https://api.resend.com/emails...');
-    
+
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -48,7 +49,7 @@ export const sendRequestEmail = async (env, title, description, debugLog = []) =
 
     debugLog.push(`Response status: ${response.status}`);
     debugLog.push(`Response status text: ${response.statusText}`);
-    
+
     const responseText = await response.text();
     debugLog.push(`Response body: ${responseText}`);
 
