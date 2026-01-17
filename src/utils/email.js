@@ -1,7 +1,13 @@
 export const sendRequestEmail = async (env, title, description, debugLog = []) => {
   debugLog.push('=== sendRequestEmail called ===');
   debugLog.push(`env object keys: ${Object.keys(env).join(', ')}`);
-  const apiKey = env.RESEND_API_KEY;
+  
+  let apiKey;
+  try {
+    apiKey = await env.RESEND_API_KEY.get();
+  } catch (error) {
+    debugLog.push(`Error getting secret: ${error.message}`);
+  }
   
   debugLog.push(`API Key exists: ${!!apiKey}`);
   debugLog.push(`API Key type: ${typeof apiKey}`);
