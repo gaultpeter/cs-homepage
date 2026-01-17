@@ -6,8 +6,11 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
-[observability]
-enabled = true
+[env.production]
+vars = {}
+
+[[env.production.secrets]]
+binding = "RESEND_API_KEY"
 
 # Production Routes (Only active on 'wrangler deploy')
 [[routes]]
