@@ -1,4 +1,8 @@
-export const getCheatSheetsHtml = () => `
+export const getCheatSheetsHtml = () => {
+    // Increment this version when you update images to invalidate user cache
+    const ASSET_VERSION = 'v=1';
+
+    const html = `
         <div class="section-header">
             <h2>Spawn Line Ups</h2>
         </div>
@@ -247,3 +251,7 @@ export const getCheatSheetsHtml = () => `
             </div>
         </details>
 `;
+
+    // Automatically append version param to all image sources
+    return html.replace(/(\.jpg|\.png|\.webp)"/g, `$1?${ASSET_VERSION}"`);
+};
