@@ -215,10 +215,7 @@ export default {
     // Handle /requests POST (add new request)
     if (url.pathname === '/requests' && request.method === 'POST') {
       try {
-        console.log('POST /requests - env:', Object.keys(env));
-        console.log('POST /requests - REQUESTS_KV exists:', !!env.REQUESTS_KV);
         const data = await request.json();
-        console.log('POST /requests - data:', data);
         const id = Date.now().toString();
         const requestData = {
           id,
@@ -226,15 +223,13 @@ export default {
           description: data.description || '',
           timestamp: new Date().toISOString()
         };
-        console.log('POST /requests - putting to KV:', id);
         await env.REQUESTS_KV.put(id, JSON.stringify(requestData));
-        console.log('POST /requests - success');
         return new Response(JSON.stringify({ success: true, id }), { 
           headers: { 'Content-Type': 'application/json' },
           status: 201
         });
       } catch (error) {
-        console.error('POST /requests - error:', error);
+        console.error('POST /requests error:', error.message);
         return new Response(JSON.stringify({ error: error.message }), { 
           headers: { 'Content-Type': 'application/json' },
           status: 500
@@ -760,7 +755,6 @@ export default {
                 <input type="text" class="search-input" id="search-input" placeholder="Search Google..." />
                 <button type="submit" class="search-button">Search</button>
                 <button type="button" class="request-button" onclick="openRequestDialog()">Request Feature</button>
-                <a href="/requests" style="padding: 12px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; transition: all 0.2s ease; white-space: nowrap;" onmouseover="this.style.borderColor='var(--accent)'; this.style.background='#161b22';" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--surface)';">📋 View Requests</a>
             </form>
         </div>
         
