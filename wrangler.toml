@@ -20,3 +20,6 @@ custom_domain = true
 
 [observability]
 enabled = true
+
+[env.preview]
+name = "cs-homepage-preview"
