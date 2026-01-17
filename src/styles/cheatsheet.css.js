@@ -104,7 +104,14 @@ export const cheatsheetStyles = `
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 1;
+    }
+
+    .cheat-image.lazy {
+        opacity: 0;
+        min-height: 155px;
+        background: var(--surface);
     }
 
     .cheat-image-wrapper:hover .cheat-image {

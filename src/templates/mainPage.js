@@ -238,6 +238,22 @@ export const createMainPageHtml = () => {
             }, 2500);
         }
 
+        // Lazy loading for images
+        const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        document.querySelectorAll("img.lazy").forEach(img => {
+            lazyImageObserver.observe(img);
+        });
+
         // Close dialog with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
