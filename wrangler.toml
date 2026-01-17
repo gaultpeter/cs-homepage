@@ -6,20 +6,15 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
-[observability]
-enabled = true
-
-# Production Routes (Only active on 'wrangler deploy')
 [[routes]]
 pattern = "cs2-homepage.uk"
+zone_name = "cs2-homepage.uk"
 custom_domain = true
 
 [[routes]]
 pattern = "www.cs2-homepage.uk"
+zone_name = "cs2-homepage.uk"
 custom_domain = true
 
-# --- Preview Environment ---
-# Run 'wrangler deploy -e preview' to use this
-[env.preview]
-name = "cs-homepage-preview"
-# We exclude [[routes]] here so it uses the workers.dev URL for testing
+[observability]
+enabled = true
