@@ -6,6 +6,11 @@ compatibility_date = "2024-03-01"
 directory = "./public"
 binding = "ASSETS"
 
+[[kv_namespaces]]
+binding = "REQUESTS_KV"
+id = "requests-kv"
+preview_id = "requests-kv-preview"
+
 [observability]
 enabled = true
 
