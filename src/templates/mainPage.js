@@ -118,9 +118,140 @@ export const createMainPageHtml = () => {
             </form>
         </div>
     </div>
-    <script src="/scripts/modal.js"></script>
-    <script src="/scripts/search.js"></script>
-    <script src="/scripts/request-dialog.js"></script>
+    <script>
+        // Modal functions
+        function openModal(src) {
+            document.getElementById('modal-image').src = src;
+            document.getElementById('image-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('image-modal').style.display = 'none';
+        }
+        document.getElementById('image-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+        // Zoom on Shift + hover in modal
+        let isZoomed = false;
+        let isMouseOver = false;
+        let lastMouseEvent = null;
+        document.getElementById('modal-image').addEventListener('mouseenter', (e) => {
+            isMouseOver = true;
+            lastMouseEvent = e;
+            if (e.shiftKey) {
+                isZoomed = true;
+                updateZoom(e);
+            }
+        });
+        document.getElementById('modal-image').addEventListener('mousemove', (e) => {
+            lastMouseEvent = e;
+            if (isZoomed) {
+                updateZoom(e);
+            }
+        });
+        document.getElementById('modal-image').addEventListener('mouseleave', (e) => {
+            isMouseOver = false;
+            isZoomed = false;
+            e.target.style.transform = '';
+            e.target.style.transformOrigin = '';
+            e.target.style.transition = 'transform 0.2s ease';
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Shift' && isMouseOver && !isZoomed) {
+                isZoomed = true;
+                updateZoom(lastMouseEvent);
+            }
+        });
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'Shift') {
+                isZoomed = false;
+                document.getElementById('modal-image').style.transform = '';
+                document.getElementById('modal-image').style.transformOrigin = '';
+                document.getElementById('modal-image').style.transition = 'transform 0.2s ease';
+            }
+        });
+        function updateZoom(e) {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+            e.target.style.transformOrigin = xPercent + '% ' + yPercent + '%';
+            e.target.style.transform = 'scale(2)';
+            e.target.style.transition = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Google Search functionality
+        function handleSearch(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                window.location.href = searchUrl;
+                document.getElementById('search-input').value = '';
+            }
+        }
+
+        // Request Dialog Functions
+        function openRequestDialog() {
+            document.getElementById('request-dialog').classList.add('show');
+            document.getElementById('request-title').focus();
+        }
+
+        function closeRequestDialog() {
+            document.getElementById('request-dialog').classList.remove('show');
+            document.getElementById('request-form').reset();
+        }
+
+        document.getElementById('request-dialog').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeRequestDialog();
+            }
+        });
+
+        async function handleRequestSubmit(event) {
+            event.preventDefault();
+            const title = document.getElementById('request-title').value.trim();
+            const description = document.getElementById('request-description').value.trim();
+
+            if (!title) {
+                alert('Please enter a title');
+                return;
+            }
+
+            try {
+                const response = await fetch('/requests', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, description })
+                });
+
+                if (response.ok) {
+                    closeRequestDialog();
+                    alert('Request submitted successfully!');
+                    document.getElementById('request-form').reset();
+                } else {
+                    alert('Failed to submit request');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting request');
+            }
+        }
+
+        // Close dialog with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeRequestDialog();
+            }
+        });
+    </script>
 </body>
 </html>
   `;
