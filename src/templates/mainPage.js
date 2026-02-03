@@ -22,6 +22,7 @@ export const createMainPageHtml = () => {
             --border: #1e293b;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+            --notice-gold: #f59e0b;
         }
 
         body { 
@@ -39,6 +40,53 @@ export const createMainPageHtml = () => {
             margin: 0 auto;
         }
 
+        /* Notice Box Styles */
+        .notice-box {
+            position: relative;
+            background: rgba(245, 158, 11, 0.07);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-left: 4px solid var(--notice-gold);
+            padding: 16px 45px 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            display: none; /* Controlled by JS */
+            transition: opacity 0.3s ease;
+        }
+
+        .notice-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .notice-close:hover {
+            color: var(--notice-gold);
+        }
+
+        .notice-box code {
+            background: #1e293b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .url-comparison {
+            margin-top: 10px;
+            display: block;
+            font-size: 0.85em;
+            color: var(--text-dim);
+        }
+
         ${commonStyles}
         ${dialogStyles}
         ${cheatsheetStyles}
@@ -46,6 +94,15 @@ export const createMainPageHtml = () => {
 </head>
 <body>
     <div class="container">
+        <div id="rep-notice" class="notice-box">
+            <button class="notice-close" onclick="dismissNotice()">×</button>
+            <strong style="color: var(--notice-gold);">Pro Tip:</strong> Want to see player reputation and stats? 
+            Simply add a <strong>w</strong> to the beginning of any Steam profile URL to navigate to <strong>csrep.gg</strong>.
+            <div class="url-comparison">
+                <code>https://steamcommunity.com/id/username/</code> → <code>https://wsteamcommunity.com/id/username/</code>
+            </div>
+        </div>
+
         <div class="header-wrapper">
             <h1>Counter Strike 2</h1>
             <button type="button" class="request-button" onclick="openRequestDialog()">Request Feature</button>
@@ -68,6 +125,7 @@ export const createMainPageHtml = () => {
             <a href="https://www.reddit.com/r/GlobalOffensive/comments/1qaz4r2/i_made_a_steam_overlay_browser_homepage_for_cs2/nz7cx0f/" class="credit-link">/u/OliverSauce</a>
         </div>
     </div>
+    
     <div id="image-modal" style="display: none;">
         <div id="modal-image-wrapper" class="modal-image-wrapper">
             <img id="modal-image" src="" alt="">
@@ -105,6 +163,23 @@ export const createMainPageHtml = () => {
     </div>
 
     <script>
+        // Persistence Logic for Notice Box
+        document.addEventListener('DOMContentLoaded', () => {
+            const notice = document.getElementById('rep-notice');
+            if (!localStorage.getItem('hideRepNotice')) {
+                notice.style.display = 'block';
+            }
+        });
+
+        function dismissNotice() {
+            const notice = document.getElementById('rep-notice');
+            notice.style.opacity = '0';
+            setTimeout(() => {
+                notice.style.display = 'none';
+                localStorage.setItem('hideRepNotice', 'true');
+            }, 300);
+        }
+
         // Modal functions
         function openModal(src) {
             document.getElementById('modal-image').src = src;
@@ -119,30 +194,25 @@ export const createMainPageHtml = () => {
                 closeModal();
             }
         });
+
         // Zoom on Shift + hover in modal
         let isZoomed = false;
-        let isMouseOver = false;
         let lastMouseEvent = null;
-        
-        // Listeners for zoom behavior
-        const wrapper = document.getElementById('modal-image-wrapper');
         const img = document.getElementById('modal-image');
 
-        // Start tracking only when in the modal
         document.getElementById('image-modal').addEventListener('mousemove', (e) => {
             lastMouseEvent = e;
-            if (isZoomed) {
-                updateZoom(e);
-            }
+            if (isZoomed) updateZoom(e);
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Shift') {
-                // If modal is open
-                if (document.getElementById('image-modal').style.display === 'flex') {
-                    isZoomed = true;
-                    updateZoom(lastMouseEvent || { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
-                }
+            if (e.key === 'Shift' && document.getElementById('image-modal').style.display === 'flex') {
+                isZoomed = true;
+                updateZoom(lastMouseEvent || { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+            }
+            if (e.key === 'Escape') {
+                closeModal();
+                closeRequestDialog();
             }
         });
 
@@ -156,91 +226,57 @@ export const createMainPageHtml = () => {
         });
 
         function updateZoom(e) {
-            // Calculate percentage across the entire window
-            // This allows zooming by pointing anywhere on screen
             const xPercent = (e.clientX / window.innerWidth) * 100;
             const yPercent = (e.clientY / window.innerHeight) * 100;
-
-            // Apply transform to the IMAGE
             img.style.transformOrigin = xPercent + '% ' + yPercent + '%';
             img.style.transform = 'scale(2)';
             img.style.transition = 'none';
         }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
 
-        // Google Search functionality
+        // Search
         function handleSearch(event) {
             event.preventDefault();
             const query = document.getElementById('search-input').value.trim();
             if (query) {
-                const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-                window.location.href = searchUrl;
-                document.getElementById('search-input').value = '';
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
             }
         }
 
-        // Request Dialog Functions
+        // Request Dialog
         function openRequestDialog() {
             document.getElementById('request-dialog').classList.add('show');
             document.getElementById('request-title').focus();
         }
-
         function closeRequestDialog() {
             document.getElementById('request-dialog').classList.remove('show');
             document.getElementById('request-form').reset();
         }
 
-        document.getElementById('request-dialog').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeRequestDialog();
-            }
-        });
-
         async function handleRequestSubmit(event) {
             event.preventDefault();
             const title = document.getElementById('request-title').value.trim();
             const description = document.getElementById('request-description').value.trim();
-
-            if (!title) {
-                alert('Please enter a title');
-                return;
-            }
-
             try {
                 const response = await fetch('/requests', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ title, description })
                 });
-
                 if (response.ok) {
                     closeRequestDialog();
                     showSuccessToast();
-                    document.getElementById('request-form').reset();
-                } else {
-                    alert('Failed to submit request');
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error submitting request');
-            }
+            } catch (error) { console.error(error); }
         }
 
-        // Success Toast
         function showSuccessToast() {
             const toast = document.getElementById('success-toast');
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
+            setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // Lazy loading for images
-        const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        // Lazy loading
+        const lazyImageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const lazyImage = entry.target;
@@ -250,19 +286,9 @@ export const createMainPageHtml = () => {
                 }
             });
         });
-
-        document.querySelectorAll("img.lazy").forEach(img => {
-            lazyImageObserver.observe(img);
-        });
-
-        // Close dialog with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeRequestDialog();
-            }
-        });
+        document.querySelectorAll("img.lazy").forEach(img => lazyImageObserver.observe(img));
     </script>
 </body>
 </html>
-  `;
+    `;
 };
