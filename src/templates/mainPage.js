@@ -87,6 +87,47 @@ export const createMainPageHtml = () => {
             color: var(--text-dim);
         }
 
+        /* Source Selector */
+        .nade-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .source-selector-wrapper {
+            display: flex;
+            align-items: center;
+            padding-bottom: 4px;
+        }
+
+        .source-select {
+            appearance: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            padding: 6px 28px 6px 10px;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+        }
+
+        .source-select:hover {
+            border-color: var(--accent);
+        }
+
+        .source-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+        }
+
         ${commonStyles}
         ${dialogStyles}
         ${cheatsheetStyles}
@@ -95,12 +136,19 @@ export const createMainPageHtml = () => {
 <body>
     <div class="container">
         <div id="rep-notice" class="notice-box">
-            <button class="notice-close" onclick="dismissNotice()">×</button>
+            <button class="notice-close" onclick="dismissNotice('rep-notice', 'hideRepNotice')">×</button>
             <strong style="color: var(--notice-gold);">Pro Tip:</strong> Want to see player reputation and stats? 
             Simply add a <strong>w</strong> to the beginning of any Steam profile URL to navigate to <strong>csrep.gg</strong>.
             <div class="url-comparison">
                 <code>https://steamcommunity.com/id/username/</code> → <code>https://wsteamcommunity.com/id/username/</code>
             </div>
+        </div>
+
+        <div id="source-notice" class="notice-box">
+            <button class="notice-close" onclick="dismissNotice('source-notice', 'hideSourceNotice')">×</button>
+            <strong style="color: var(--notice-gold);">Pro Tip:</strong> You can switch the Nade Lineup source between 
+            <strong>csnades.gg</strong> and <strong>jumpthrow.pro</strong> using the dropdown next to "Nade Lineups" below.
+            Your preference is saved automatically.
         </div>
 
         <div class="header-wrapper">
@@ -163,20 +211,81 @@ export const createMainPageHtml = () => {
     </div>
 
     <script>
-        // Persistence Logic for Notice Box
-        document.addEventListener('DOMContentLoaded', () => {
-            const notice = document.getElementById('rep-notice');
-            if (!localStorage.getItem('hideRepNotice')) {
-                notice.style.display = 'block';
+        // ── Nade Source Config ──────────────────────────────────────────────
+        const NADE_SOURCES = {
+            csnades: {
+                label: 'csnades.gg',
+                url: 'https://csnades.gg',
+                slugs: {
+                    mirage:   'https://csnades.gg/mirage',
+                    dust2:    'https://csnades.gg/dust2',
+                    inferno:  'https://csnades.gg/inferno',
+                    overpass: 'https://csnades.gg/overpass',
+                    nuke:     'https://csnades.gg/nuke',
+                    ancient:  'https://csnades.gg/ancient',
+                    anubis:   'https://csnades.gg/anubis',
+                }
+            },
+            jumpthrow: {
+                label: 'jumpthrow.pro',
+                url: 'https://jumpthrow.pro',
+                slugs: {
+                    mirage:   'https://jumpthrow.pro/maps/mirage/',
+                    dust2:    'https://jumpthrow.pro/maps/dust2/',
+                    inferno:  'https://jumpthrow.pro/maps/inferno/',
+                    overpass: 'https://jumpthrow.pro/maps/overpass/',
+                    nuke:     'https://jumpthrow.pro/maps/nuke/',
+                    ancient:  'https://jumpthrow.pro/maps/ancient/',
+                    anubis:   'https://jumpthrow.pro/maps/anubis/',
+                }
             }
+        };
+
+        function applyNadesSource(sourceKey) {
+            const source = NADE_SOURCES[sourceKey] || NADE_SOURCES.csnades;
+            // Update card links
+            document.querySelectorAll('.nade-card[data-map]').forEach(card => {
+                const map = card.dataset.map;
+                card.href = source.slugs[map] || source.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+            });
+            // Update credit text
+            const credit = document.getElementById('nade-source-credit');
+            if (credit) {
+                credit.innerHTML = 'via <a href="' + source.url + '" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">' + source.label + '</a>';
+            }
+            // Sync dropdown
+            const select = document.getElementById('nade-source-select');
+            if (select) select.value = sourceKey;
+        }
+
+        function setNadesSource(sourceKey) {
+            localStorage.setItem('nadesSource', sourceKey);
+            applyNadesSource(sourceKey);
+        }
+
+        // ── Notice Boxes ────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            // csrep notice
+            if (!localStorage.getItem('hideRepNotice')) {
+                document.getElementById('rep-notice').style.display = 'block';
+            }
+            // source notice
+            if (!localStorage.getItem('hideSourceNotice')) {
+                document.getElementById('source-notice').style.display = 'block';
+            }
+            // Apply saved nade source (default: csnades)
+            const savedSource = localStorage.getItem('nadesSource') || 'csnades';
+            applyNadesSource(savedSource);
         });
 
-        function dismissNotice() {
-            const notice = document.getElementById('rep-notice');
+        function dismissNotice(id, key) {
+            const notice = document.getElementById(id);
             notice.style.opacity = '0';
             setTimeout(() => {
                 notice.style.display = 'none';
-                localStorage.setItem('hideRepNotice', 'true');
+                localStorage.setItem(key, 'true');
             }, 300);
         }
 
