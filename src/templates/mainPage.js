@@ -247,8 +247,6 @@ export const createMainPageHtml = () => {
             document.querySelectorAll('.nade-card[data-map]').forEach(card => {
                 const map = card.dataset.map;
                 card.href = source.slugs[map] || source.url;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
             });
             // Update credit text
             const credit = document.getElementById('nade-source-credit');
