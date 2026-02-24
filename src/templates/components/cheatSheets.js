@@ -22,6 +22,12 @@ export const getCheatSheetsHtml = () => {
                     </div>
                 </div>
                 <div class="cheat-item">
+                    <span class="cheat-label">Blain</span>
+                    <div class="cheat-image-wrapper">
+                        <img data-src="/cheat-sheet/ancient/thumbnails/Ancient-Blain.jpg" data-full="/cheat-sheet/ancient/Ancient-Blain.jpg" class="cheat-image lazy" loading="lazy" onclick="openModal(this.dataset.full)">
+                    </div>
+                </div>
+                <div class="cheat-item">
                     <span class="cheat-label">A Donut</span>
                     <div class="cheat-image-wrapper">
                         <img data-src="/cheat-sheet/ancient/thumbnails/Ancient-ADonut.jpg" data-full="/cheat-sheet/ancient/Ancient-ADonut.jpg" class="cheat-image lazy" loading="lazy" onclick="openModal(this.dataset.full)">
