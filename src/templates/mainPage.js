@@ -224,6 +224,7 @@ export const createMainPageHtml = () => {
                     nuke:     'https://csnades.gg/nuke',
                     ancient:  'https://csnades.gg/ancient',
                     anubis:   'https://csnades.gg/anubis',
+                    cache:    'https://csnades.gg/cache',
                 }
             },
             jumpthrow: {
@@ -243,10 +244,15 @@ export const createMainPageHtml = () => {
 
         function applyNadesSource(sourceKey) {
             const source = NADE_SOURCES[sourceKey] || NADE_SOURCES.csnades;
-            // Update card links
+            // Update card links and visibility
             document.querySelectorAll('.nade-card[data-map]').forEach(card => {
                 const map = card.dataset.map;
-                card.href = source.slugs[map] || source.url;
+                if (source.slugs[map]) {
+                    card.href = source.slugs[map];
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
             // Update credit text
             const credit = document.getElementById('nade-source-credit');
