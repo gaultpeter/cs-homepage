@@ -20,5 +20,6 @@ export const getCsnadesHtml = () => `
             <a data-map="nuke" class="card nade-card">Nuke</a>
             <a data-map="ancient" class="card nade-card">Ancient</a>
             <a data-map="anubis" class="card nade-card">Anubis</a>
+            <a data-map="cache" class="card nade-card">Cache</a>
         </div>
 `;
