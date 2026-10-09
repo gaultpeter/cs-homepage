@@ -238,6 +238,7 @@ export const createMainPageHtml = () => {
                     nuke:     'https://jumpthrow.pro/maps/nuke/',
                     ancient:  'https://jumpthrow.pro/maps/ancient/',
                     anubis:   'https://jumpthrow.pro/maps/anubis/',
+                    cache:    'https://jumpthrow.pro/maps/cache/',
                 }
             }
         };
